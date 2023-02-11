@@ -85,7 +85,7 @@ python3 -m pytest
 
 ## Results
 After running the algorithm, the compressed file will be generated, there is also a comparasion of original file size and compressed file size showing in the console. <br/>
-![alt text](TODO)
+![alt text](https://github.com/PinHoWang/data-compress-system/blob/main/result.png)
 
 ## Conclusion
 - We can successfully compress and decompress the target file

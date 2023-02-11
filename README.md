@@ -1,8 +1,5 @@
 # Data Compression Design
 In this coding exercise, the **LZ77 lossless compression algorithm** will be introduced to compress the data buffer of bytes.
-## Assumptions
-1. Data is an array of bytes. Each byte will contain a number from 0 to 127 (0x00 to 0x7F). It is common for the data in the buffer to have the same value repeated in the series.
-2. The compressed data will need to be decompressable.
 
 ## Goals
 - Compression/decompression algorithm
@@ -12,13 +9,17 @@ In this coding exercise, the **LZ77 lossless compression algorithm** will be int
 - Maintainability
 - Testability
 
+## Assumptions
+1. Data is an array of bytes. Each byte will contain a number from 0 to 127 (0x00 to 0x7F). It is common for the data in the buffer to have the same value repeated in the series.
+2. The compressed data will need to be decompressable.
+
 ## Algorithm
 For the algorithm, we assume the data in the buffer has the same value repeated in the series, e.g. [1, 1, 1, 2, 3, 3, 3, ...]. LZ77 algorithm becomes a great candidate for this problem. The LZ77 compression algorithm is a lossless compression algorithm and it reduces the size of the input data by replacing redundant information with length-distance pair. <br/>
 We compare the data in the slide window and lookahead buffer to find out the longest repeated substring and replace it with its length-distance pair. <br/>
 ### Steps of the algorithm:
 1. Set a fixed size of slide window and lookahead buffer (default slide window size is 20, lookahead buffer is 15).
 2. Find the longest repeated substring between slide window and lookahead buffer.
-3. If there is a matching substring, we can encode the data into length-distance pair and add it to the output string. If not, we can just add the original data to the output string. (Need a flag to determine whether it's encoded or not)
+3. If there is a matching substring found, we can encode the data into length-distance pair and add it to the output string. If not, we can just add the original data to the output string. (Need a flag to determine whether it's encoded or not)
 4. Move the slide window and lookahead buffer forward (if there is a match in step 3, move forward for the length of the encode, otherwise, 1)
 5. Start again from step 2 until all the data is processed
 

@@ -81,6 +81,7 @@ Run LZ77 unittests
 ```
 python3 -m pytest
 ```
+![alt text](https://github.com/PinHoWang/data-compress-system/blob/main/test_result.png)
 
 
 ## Results

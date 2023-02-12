@@ -85,7 +85,8 @@ python3 -m pytest
 
 
 ## Results
-After running the algorithm, the compressed file will be generated, there is also a comparison of the original file size and the compressed file size showing in the console. <br/>
+After running the algorithm, the compressed file will be generated, there is also a comparison of the original file size and the compressed file size showing in the console. <br/><br/>
+
 ![alt text](https://github.com/PinHoWang/data-compress-system/blob/main/result.png)
 
 ## Conclusion

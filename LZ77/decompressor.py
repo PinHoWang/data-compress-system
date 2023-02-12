@@ -20,20 +20,24 @@ def decompress(input_file_path, output_file_path=None) -> Union[str, None]:
     
     while len(data) >= 9:
         flag = data.pop(0)
+        # Add to output buffer if data is not encoded
         if not flag:
             byte = data[0:8].tobytes()
             output_buffer.append(byte)
             del data[0:8]
+        # Decode data and add to output buffer
         else:
             byte1 = ord(data[0:8].tobytes())
             byte2 = ord(data[8:16].tobytes())
 
             del data[0:16]
-            distance = (byte1 << 4) | (byte2 >> 4)
-            length = (byte2 & 0xf)
+            distance = (byte1 << 4) | (byte2 >> 4) # from byte to char distance
+            length = (byte2 & 0xf) # from byte to char length
 
+            # Add decompressed data to output buffer
             for i in range(length):
                 output_buffer.append(output_buffer[-distance])
+                
     out_data = b''.join(output_buffer)
     
     if output_file_path:
